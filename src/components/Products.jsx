@@ -1,39 +1,21 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import actions from '../actions';
-import '../styles/components/Products.styl';
-import Product from './Product';
+/* eslint-disable import/no-unresolved */
+import React, { useContext } from 'react';
+import '@styles/components/Products.styl';
+import AppContext from '@context/AppContext';
+import Product from '@components/Product';
 
-const Products = (props) => {
-  const { products } = props;
-
-  const handleAddToCart = product => () => {
-    props.addToCart(product);
-  };
+const Products = () => {
+  const { products } = useContext(AppContext);
 
   return (
     <div className="Products">
       <div className="Products-items">
         {products.map(product => (
-          <Product
-            key={product.id}
-            product={product}
-            handleAddToCart={handleAddToCart}
-          />
+          <Product product={product} key={product.id} />
         ))}
       </div>
     </div>
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    products: state.products,
-  };
-};
-
-const mapDispatchToProps = {
-  addToCart: actions.addToCart,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Products);
+export default Products;
