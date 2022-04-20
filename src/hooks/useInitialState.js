@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const API = 'https://platzi-store-ts-api.herokuapp.com/api/v1';
+const API = 'https://platzi-store-express-webpack.herokuapp.com/api/v1/products';
 
 const initialState = {
   cart: [],
